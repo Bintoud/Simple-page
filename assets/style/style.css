@@ -1,0 +1,206 @@
+@font-face {
+    font-family: "Source Sans Pro";
+    src:url(../fonts/SourceSansPro-Light.ttf);
+}
+
+/* indispensable avant de commencer un projet de faire ses réglages 
+    on initialise tout à 0 car de bases certain on des margin et padding( h1 etc) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* pour que tout ce mettent bien dans les boites (container) */
+    list-style-type: none; /* point des liste */
+    outline: none; /* l'élem engras quand on clic formulaire/*    
+}
+h1 {
+    font-size: 3.4rem;
+    font-weight: 200;
+}
+h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+a,
+a:visited { /* <= lien qui ont été cliqué */
+    color: black;
+    text-decoration: none; /* pour enlever le soulignement */
+}
+p {
+    line-height: 36px; /* écarts entre les lignes */
+    margin: 25px 0; /*25px = margin top + bottom / right et left = 0  */
+}
+.button {
+    border: 1px solid #ccc;
+    background: transparent;
+    border-radius: 50px;
+    padding: 13px 30px; /* 13 en haut en bas / 30 droite gauche */
+    display: inline-block; /* les liens ne revienne pas à la ligne donc inligne block pour etre considérer com des block(se détache du dessous)*/ 
+    text-transform: uppercase; /* tout en majuscule*/
+    letter-spacing: 2px;
+    cursor: pointer;
+    font: 700 O.75rem "Source Sans Pro";/* grosseur taille style de font */
+    transition: 0.3s; /* temps */
+}
+.button:hover,
+footer a:hover {
+    border: 1px solid skyblue;
+    color: skyblue;
+}
+/* pour centrer le text*/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 55px;
+}
+/* ombre intérieur = le trait*/
+.section-1,
+.section-2,
+.contact {
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.082); /* ombre intérieur = axe des X=0, axe des Y= 1px*/
+}
+
+/* ********************************** */
+
+body {
+    font-family: "Source Sans Pro", sans-serif;
+}
+header {
+    min-height: 100vh;/* vh= virtual height prend 100% de la hauteur de l'écran */
+    display: grid;
+    grid-template-columns: 50% 50%; /* 2 enfant à colonne égale */
+}
+/*pour récup une img en css on écrit le nom de class(html)*/
+.img-banner {
+    background: url(../img/banner.jpg) right/cover; /* <=pour montrer la partie droite de l'img */
+}
+/* *********** SECTION 1 ************ */
+.section-1 {
+    display: grid;
+    grid-template-columns: 37% 63%;
+    min-height: 400px; /* pour pas que sa soit en dessous / on a un peu de marge*/   
+}
+.section-1 .img {
+    background: url(../img/img-left.jpg) center/cover;
+}
+/* *********** SECTION 2 ************ */
+.section-2 {
+    display: grid;
+    grid-template-columns: 63% 35%;
+    min-height: 400px;
+}
+.section-2 .img {
+    background: url(../img/img-right.jpg) center/cover;
+}
+/* ************** CONTACT ************* */
+.contact {
+    text-align: center;
+    padding: 60px 0;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100px 224px; /*les lignes*/
+    /* pour que le 3e enfant prenne deux colonnes */
+    grid-template-areas: 
+    "input1 input2"
+    "textarea textarea";
+    gap: 10px; /*écart entre les cases */
+    width: 85%;
+    margin: 30px auto; /*auto pour centrer*/
+    max-width: 600px; /* pour pas que ça ne s'étend, je défini une largeur max */
+}
+/* atrribut de notre class textarea  ligne 108*/
+.textarea {
+    grid-area: textarea;
+}
+label {
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+input[type="text"],
+textarea {
+    width: 100%;
+    margin: 20px 0 40px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    transition: 0.2s;
+}
+/* Desygn  focus au clic le style change  */ 
+input[type="text"]:focus,
+textarea:focus {
+    border: 1px solid skyblue;
+}
+textarea {
+    resize: none;
+    height: 100px;
+}
+/* ************** FOOTER ****************** */
+footer {
+    padding: 70px 0 90px;
+    position: relative;
+}
+footer:before {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.082);
+    /* pour centrer un élem en absolute (la ligne du footer) */
+    left: 50%;
+    transform: translateX(-50%);/* X=horizontale*/
+    top: 0; /*top 0 par rapport a son parent(footer) qui est en position relative ligne144 sinon la ligne va se placer tout en haut de notre page */
+}
+footer ul {
+    display: flex;
+    justify-content: space-between;
+    width: 33%; /* les élem sont placer à gauche et ne sont plus centrer */
+    min-width: 300px;
+    margin: 0 auto; /* pour les centrer on fait un margin 0(haut et bas) auto gauche droite on les meme dimensions */   
+}
+footer a {
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    width: 44px;
+    height: 44px;
+    display:inline-block;
+    /* pour centrer un seul enfant*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+/* *********** partie RESPONSIVE tel *********** */
+/* pour ce faire nous allons passer en mode block pour que les élem soit les uns en dessous des autres */
+
+@media screen and (max-width: 650px) { /* quand l'écran fait moin de 650px alors tu appliques ce code */
+    header,
+    .section-1,
+    .section-2 {
+        display: block;
+    }
+    header {
+        height: auto;
+    }
+    header .img-banner {
+        height: 50vh; /* pour que notre img prenne toujours 50% de l'écran user */
+        margin-top: 30px;
+    }
+    .container {
+        padding: 15px ;
+    }
+    footer ul {
+        min-width: 200px;
+    }
+    footer a {
+        width: 30px;
+        height: 30px;
+    }
+    footer i {
+        font-size: 0.7rem;
+    }
+}
